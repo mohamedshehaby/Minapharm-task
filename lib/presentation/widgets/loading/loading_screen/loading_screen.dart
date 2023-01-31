@@ -2,10 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:minapharm_task/presentation/widgets/loading/loading_Indicator.dart';
-
 import 'package:minapharm_task/presentation/resources/colors_manager.dart';
 import 'package:minapharm_task/presentation/resources/values_manager.dart';
+import 'package:minapharm_task/presentation/widgets/loading/loading_indicator.dart';
 import 'package:minapharm_task/presentation/widgets/loading/loading_screen/loading_screen_controller.dart';
 
 class LoadingScreen {
@@ -100,7 +99,7 @@ class LoadingScreen {
       },
     );
 
-    overlayState?.insert(overlayEntry);
+    overlayState.insert(overlayEntry);
 
     // This will control the overlay
     return LoadingScreenController(

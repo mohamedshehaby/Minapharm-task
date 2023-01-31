@@ -23,30 +23,36 @@ MaterialColor createMaterialColor(Color color) {
   return MaterialColor(color.value, swatch);
 }
 
+var orientation = ScreenUtil().orientation;
+
 ThemeData getAppTheme() {
   return ThemeData(
     useMaterial3: true,
 
     // platform: TargetPlatform.iOS,
+    colorScheme: ColorScheme.fromSwatch(
+      primarySwatch: createMaterialColor(AppColor.primary),
+      primaryColorDark: AppColor.darkPrimary,
+      accentColor: AppColor.secondary,
+      errorColor: AppColor.red,
+      cardColor: AppColor.white,
+      backgroundColor: AppColor.white,
+    ),
 
-    // Main Colors
-    primaryColor: AppColor.primary,
-    primaryColorLight: AppColor.lightPrimary,
-    primaryColorDark: AppColor.darkPrimary,
     disabledColor: AppColor.grey1,
-    errorColor: Colors.red,
     splashColor: AppColor.lightPrimary,
-    primarySwatch: createMaterialColor(AppColor.primary),
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: AppColor.white,
 
     // ProgressIndicator Theme
     progressIndicatorTheme: const ProgressIndicatorThemeData(color: AppColor.secondary),
 
     // App Bar Theme
     appBarTheme: AppBarTheme(
-      toolbarHeight: AppSize.s64.h,
+      toolbarHeight: ScreenUtil().screenHeight *
+          (ScreenUtil().orientation == Orientation.portrait ? .09 : .14),
+      iconTheme: IconThemeData(size: AppSize.s20.w),
       systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: AppColor.primary,
+        statusBarColor: AppColor.lightPrimary,
         statusBarIconBrightness: Brightness.light,
         statusBarBrightness: Brightness.light,
       ),
@@ -54,17 +60,23 @@ ThemeData getAppTheme() {
       backgroundColor: AppColor.primary,
       shadowColor: AppColor.lightPrimary,
       elevation: 0,
-      titleTextStyle: getSemiBoldTextStyle(fontSize: FontSize.s16, color: Colors.white),
+      titleTextStyle: getSemiBoldTextStyle(fontSize: FontSize.s16, color: AppColor.white),
     ),
 
+    dialogTheme: const DialogTheme(
+      backgroundColor: AppColor.white,
+      surfaceTintColor: AppColor.white,
+    ),
     // Elevated Button Theme
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: AppSize.s12.h),
+        padding: EdgeInsets.symmetric(
+            vertical:
+                ScreenUtil().orientation == Orientation.portrait ? AppSize.s12.h : AppSize.s24.h),
         minimumSize: Size(double.infinity, AppSize.s24.h),
-        textStyle: getRegularTextStyle(color: Colors.white, fontSize: FontSize.s18),
+        textStyle: getRegularTextStyle(color: AppColor.white, fontSize: FontSize.s18),
         backgroundColor: AppColor.primary,
-        foregroundColor: Colors.white,
+        foregroundColor: AppColor.white,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSize.s12.w)),
       ),
     ),
@@ -99,19 +111,19 @@ ThemeData getAppTheme() {
     // Form Field Theme
     inputDecorationTheme: InputDecorationTheme(
       // content padding
-      contentPadding: const EdgeInsets.all(AppSize.s12),
+      contentPadding: EdgeInsets.all(AppSize.s12.w),
       // hint style
       hintStyle: getRegularTextStyle(color: AppColor.grey, fontSize: FontSize.s14),
       // label style
       labelStyle: getMediumTextStyle(color: AppColor.grey, fontSize: FontSize.s14),
       // error style
-      errorStyle: getRegularTextStyle(color: Colors.red),
+      errorStyle: getRegularTextStyle(color: AppColor.red),
       // enabled border
       enabledBorder: _getOutlineInputBorder(color: AppColor.grey),
       // focused border
       focusedBorder: _getOutlineInputBorder(color: AppColor.secondary),
       // error border
-      errorBorder: _getOutlineInputBorder(color: Colors.red),
+      errorBorder: _getOutlineInputBorder(color: AppColor.red),
       // focused error border
       focusedErrorBorder: _getOutlineInputBorder(color: AppColor.primary),
     ),

@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+import 'package:minapharm_task/presentation/blocs/managing/auth/auth_bloc.dart';
 import 'package:minapharm_task/presentation/blocs/validation/login/login_bloc.dart';
 import 'package:minapharm_task/presentation/resources/resources.dart';
-
-import 'package:minapharm_task/presentation/blocs/managing/auth/auth_bloc.dart';
 import 'package:minapharm_task/presentation/widgets/dialog/show_auth_error.dart';
 import 'package:minapharm_task/presentation/widgets/loading/loading_screen/loading_screen.dart';
 
@@ -38,18 +37,16 @@ class LoginScreen extends StatelessWidget {
           child: Align(
             alignment: Alignment.center,
             child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: AppSize.s32.w, vertical: AppSize.s20.h),
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  runSpacing: AppSize.s20.h,
-                  children: const [
-                    UserNameTextField(),
-                    PasswordTextField(),
-                    LoginButton(),
-                    GoToSignupViewButton()
-                  ],
-                ),
+              padding: EdgeInsets.symmetric(horizontal: AppSize.s24.w, vertical: AppSize.s20.h),
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                runSpacing: AppSize.s20.h,
+                children: const [
+                  UserNameTextField(),
+                  PasswordTextField(),
+                  LoginButton(),
+                  GoToSignupViewButton()
+                ],
               ),
             ),
           ),

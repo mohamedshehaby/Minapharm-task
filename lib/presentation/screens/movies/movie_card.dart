@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:minapharm_task/presentation/widgets/loading/loading_Indicator.dart';
-
 import 'package:minapharm_task/domain/entities/movie_entity.dart';
 import 'package:minapharm_task/presentation/resources/values_manager.dart';
+import 'package:minapharm_task/presentation/widgets/loading/loading_indicator.dart';
 
 class MovieCard extends StatelessWidget {
   final MovieEntity movie;
@@ -24,7 +23,7 @@ class MovieCard extends StatelessWidget {
                 return const LoadingIndicator();
               },
               errorWidget: (context, url, error) {
-                return   const LoadingIndicator();
+                return const LoadingIndicator();
               },
               imageUrl: movie.url,
             ),

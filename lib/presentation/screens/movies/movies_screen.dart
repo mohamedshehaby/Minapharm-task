@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:minapharm_task/presentation/widgets/error/error_screen.dart';
-
 import 'package:minapharm_task/presentation/blocs/managing/movies/movies_bloc.dart';
+import 'package:minapharm_task/presentation/resources/colors_manager.dart';
 import 'package:minapharm_task/presentation/resources/strings_manager.dart';
 import 'package:minapharm_task/presentation/resources/values_manager.dart';
 import 'package:minapharm_task/presentation/screens/movies/movie_card.dart';
+import 'package:minapharm_task/presentation/widgets/error/error_screen.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});
@@ -17,7 +17,7 @@ class MoviesScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text(AppStrings.movies),
         leading: const BackButton(
-          color: Colors.white,
+          color: AppColor.white,
         ),
       ),
       body: BlocBuilder<MoviesBloc, MoviesState>(
@@ -36,7 +36,10 @@ class MoviesScreen extends StatelessWidget {
                     final movie = movies.elementAt(index);
                     return Container(
                       padding: EdgeInsets.only(
-                          top: AppSize.s12.h, right: AppSize.s12.w, left: AppSize.s12.w),
+                        top: AppSize.s12.h,
+                        right: AppSize.s12.w,
+                        left: AppSize.s12.w,
+                      ),
                       height: ScreenUtil().screenHeight * .65,
                       child: MovieCard(
                         movie: movie,
